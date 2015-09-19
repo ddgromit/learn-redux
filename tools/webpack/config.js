@@ -22,6 +22,7 @@ export const webpackDevConfig = {
           }
         },
         { test: /\.css$/, loader: "style-loader!css-loader"},
+        { test: /\.scss$/, loader: "style-loader!css-loader!autoprefixer!sass-loader"},
         { test: /\.less$/, loader: "style-loader!css-loader!autoprefixer!less-loader"},
         { include: /\.json$/, loaders: ["json-loader"]},
 
@@ -42,8 +43,9 @@ export const webpackDevConfig = {
         '',
         '.js',
         '.jsx',
-        '.less',
         '.css',
+        '.less',
+        '.scss',
         '.json'
       ]
     },
