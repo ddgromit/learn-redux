@@ -7,6 +7,7 @@ export default class HelloWorld extends React.Component {
     return (
       <div>
         <Button bsStyle="primary">Hello</Button>
+        <input />
       </div>
     );
   }

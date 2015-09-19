@@ -1,8 +1,13 @@
 import path from 'path';
+import webpack from 'webpack';
 
 export const webpackDevConfig = {
     entry: {
-      "client-entry": ["webpack-dev-server/client?http://localhost:8080", "./src/entries/client-entry.js"],
+      "client-entry": [
+        "webpack-dev-server/client?http://localhost:8080",
+        "webpack/hot/dev-server",
+        "./src/entries/client-entry.js",
+      ],
     },
 
     output: {
@@ -36,6 +41,10 @@ export const webpackDevConfig = {
         {test: /\.js$/, loader: "eslint-loader", exclude: [/node_modules/,/vendor/]}
       ]
     },
+
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ],
 
     resolve: {
       root: path.join(__dirname, '../../src'),

@@ -10,6 +10,7 @@ gulp.task('default', function() {
     historyApiFallback: true,
     contentBase: './tools/webpack',
     publicPath: '/dist/',
+    hot: true,
   }).listen(8080, "localhost", function(err) {
     if(err) throw err;
     console.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
