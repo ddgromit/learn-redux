@@ -2,6 +2,8 @@ import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 
+const rootDir = path.join(__dirname, '../../');
+
 const common = {
     entry: {
       "client-entry": [
@@ -10,7 +12,7 @@ const common = {
     },
 
     output: {
-      path: (__dirname + '/dist'),
+      path: path.join(rootDir, 'dist'),
       filename: 'bundle.[name].js',
       publicPath: '/dist/'
     },
@@ -42,7 +44,7 @@ const common = {
     },
 
     resolve: {
-      root: path.join(__dirname, '../../src'),
+      root: path.join(rootDir, 'src'),
       extensions: [
         '',
         '.js',
@@ -66,4 +68,38 @@ export const webpackDevConfig = merge(common, {
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
+});
+
+export const webpackProdConfig = merge(common, {
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.DefinePlugin({
+      'ENV_CONSTANTS': {
+        'api_server_prefix': JSON.stringify(''),
+        'asset_prefix': JSON.stringify('/assets'),
+      }
+    }),
+
+    // Exit on lint or compile errors to cancel heroku build.
+    // Webpack should do this itself but its a bug in 1.10.5
+    // https://github.com/webpack/webpack/issues/711
+    function () {
+      this.plugin('done', function (stats) {
+        if (stats.compilation.errors && stats.compilation.errors.length) {
+          console.log('Found following error(s):');
+          stats.compilation.errors.forEach(function(theError) {
+              console.log(theError.error);
+          });
+          process.exit(1);
+        }
+      });
+    },
+  ]
 });
