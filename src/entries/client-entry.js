@@ -1,10 +1,9 @@
-console.log('hello world');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HelloWorld from 'app/components/HelloWorld';
+import Counter from 'app/components/Counter';
+import 'lib/styles/bootstrap';
 
 ReactDOM.render(
-  <HelloWorld />,
+  <Counter />,
   document.getElementById('react-container')
 );

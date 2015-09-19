@@ -51,7 +51,7 @@
     "no-invalid-regexp": 2,          // http://eslint.org/docs/rules/no-invalid-regexp
     "no-irregular-whitespace": 2,    // http://eslint.org/docs/rules/no-irregular-whitespace
     "no-obj-calls": 2,               // http://eslint.org/docs/rules/no-obj-calls
-    "quote-props": 2,           // http://eslint.org/docs/rules/no-reserved-keys
+    "quote-props": [2, "as-needed"],           // http://eslint.org/docs/rules/no-reserved-keys
     "no-sparse-arrays": 2,           // http://eslint.org/docs/rules/no-sparse-arrays
     "no-unreachable": 2,             // http://eslint.org/docs/rules/no-unreachable
     "use-isnan": 2,                  // http://eslint.org/docs/rules/use-isnan
@@ -154,7 +154,7 @@
  * JSX style
  */
     "react/display-name": 0,
-    "react/jsx-boolean-value": 2,
+    "react/jsx-boolean-value": 0,
     "jsx-quotes": [2, "prefer-double"],
     "react/jsx-no-undef": 2,
     "react/jsx-sort-props": 0,
