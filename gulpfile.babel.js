@@ -6,7 +6,7 @@ import { webpackDevConfig } from './tools/webpack/config';
 gulp.task('default', function() {
   var compiler = webpack(webpackDevConfig);
   new WebpackDevServer(compiler, {
-    noInfo: true,
+    noInfo: false,
     historyApiFallback: true,
     contentBase: './tools/webpack',
     publicPath: '/dist/',
