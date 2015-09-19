@@ -1,7 +1,9 @@
 import gulp from 'gulp';
 import { startWebpackDevServer } from './tools/webpack/dev-server';
 
-gulp.task('default', function() {
+gulp.task('default', ['dev']);
+
+gulp.task('dev', function() {
   startWebpackDevServer().then(() => {
     console.log('webpack started');
   }).catch(() => {

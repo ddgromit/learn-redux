@@ -1,7 +1,7 @@
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
 import { webpackDevConfig } from './config';
-console.log(webpackDevConfig);
+
 export function startWebpackDevServer(hot = true) {
   return new Promise(function(resolve, reject) {
     var compiler = webpack(webpackDevConfig);
