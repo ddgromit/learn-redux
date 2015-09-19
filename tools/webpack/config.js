@@ -1,6 +1,8 @@
+import path from 'path';
+
 export const webpackDevConfig = {
     entry: {
-      "client-entry": "./src/entries/client-entry.js",
+      "client-entry": ["webpack-dev-server/client?http://localhost:8080", "./src/entries/client-entry.js"],
     },
 
     output: {
@@ -19,8 +21,6 @@ export const webpackDevConfig = {
             stage: 0
           }
         },
-        { test: /\.coffee$/, loader: 'coffee-loader' },
-        { test: /\.ejs$/, loader: 'ejs-loader' },
         { test: /\.css$/, loader: "style-loader!css-loader"},
         { test: /\.less$/, loader: "style-loader!css-loader!autoprefixer!less-loader"},
         { include: /\.json$/, loaders: ["json-loader"]},
@@ -37,6 +37,7 @@ export const webpackDevConfig = {
     },
 
     resolve: {
+      root: path.join(__dirname, '../../src'),
       extensions: [
         '',
         '.js',
