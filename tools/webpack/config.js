@@ -66,7 +66,11 @@ export const webpackDevConfig = merge(common, {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      '__DEVELOPMENT__': true,
+      '__DEVTOOLS__': true,
+    }),
   ],
 });
 
@@ -81,10 +85,8 @@ export const webpackProdConfig = merge(common, {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.DefinePlugin({
-      'ENV_CONSTANTS': {
-        'api_server_prefix': JSON.stringify(''),
-        'asset_prefix': JSON.stringify('/assets'),
-      }
+      '__DEVELOPMENT__': false,
+      '__DEVTOOLS__': true,
     }),
 
     // Exit on lint or compile errors to cancel heroku build.
