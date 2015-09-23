@@ -1,24 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Counter from 'app/components/Counter';
-import 'lib/styles/bootstrap';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import { devTools, persistState } from 'redux-devtools';
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import myLogger from 'lib/redux-middleware/myLogger';
+
+import 'lib/styles/bootstrap';
+import Counter from 'app/components/Counter';
 import countingApp from 'app/reducers/countingApp';
 import { increment } from 'app/actions/counter';
 
-let store = createStore(countingApp);
-store.subscribe(() => {
-  console.log('New State', store.getState());
-});
-console.log(store.getState());
-console.log(store.dispatch(increment()));
-console.log(store.getState());
+let finalCreateStore = compose(
+  applyMiddleware(myLogger),
+  devTools(),
+  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+)(createStore);
+let store = finalCreateStore(countingApp);
+store.dispatch(increment());
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Counter />
-  </Provider>,
+  <div>
+    <Provider store={store}>
+      <Counter />
+    </Provider>
+    <DebugPanel top right bottom>
+      <DevTools store={store} monitor={LogMonitor} />
+    </DebugPanel>
+  </div>,
   document.getElementById('react-container')
 );
