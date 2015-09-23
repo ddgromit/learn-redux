@@ -1,19 +1,12 @@
 import React from 'react';
 import Button from 'react-bootstrap/lib/Button';
 import Input from 'react-bootstrap/lib/Input';
+import { connect } from 'react-redux';
+import { increment } from 'app/actions/counter';
 
-export default class HelloWorld extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-    };
-  }
-
+class Counter extends React.Component {
   onClickIncrement() {
-    this.setState({
-      count: this.state.count + 1,
-    });
+    this.props.dispatch(increment());
   }
 
   render() {
@@ -22,7 +15,7 @@ export default class HelloWorld extends React.Component {
         <div className="row">
           <h1>Counter</h1>
           Value:
-          <Input type="text" readOnly={true} value={this.state.count} />
+          <Input type="text" readOnly={true} value={this.props.count} />
           <Button
             bsStyle="primary"
             onClick={this.onClickIncrement.bind(this)}>Increment</Button>
@@ -31,3 +24,11 @@ export default class HelloWorld extends React.Component {
     );
   }
 }
+
+function select(state) {
+  return {
+    count: state.count,
+  };
+}
+
+export default connect(select)(Counter);
