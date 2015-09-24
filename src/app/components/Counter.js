@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/lib/Button';
 import Input from 'react-bootstrap/lib/Input';
 import { connect } from 'react-redux';
 import { increment } from 'app/actions/counter';
+import { Link } from 'react-router';
+import { pushState } from 'redux-router';
 
 class Counter extends React.Component {
   onClickIncrement() {
@@ -10,8 +12,14 @@ class Counter extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="container">
+        <div>
+          <a href="/hello">Hello</a>
+          Current Pathname: { this.props.pathname }
+          <Button onClick={() => this.props.pushState(null, '/hello')}>Dispatch to Hello</Button>
+        </div>
         <div className="row">
           <h1>Counter</h1>
           Value:
@@ -27,8 +35,9 @@ class Counter extends React.Component {
 
 function select(state) {
   return {
-    count: state.count,
+    count: state.counting.count,
+    pathname: state.router.location.pathname,
   };
 }
 
-export default connect(select)(Counter);
+export default connect(select, { pushState })(Counter);
