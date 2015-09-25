@@ -1,5 +1,5 @@
 import React from 'react';
-import routes from 'app/routes';
+import getRoutes from 'app/routes';
 import { createHistory } from 'history';
 import { reduxReactRouter } from 'redux-router';
 import { createStore, compose } from 'redux';
@@ -9,7 +9,7 @@ if (__DEVTOOLS__) {
   const { devTools, persistState } = require('redux-devtools');
   finalCreateStore = compose(
     reduxReactRouter({
-      routes,
+      getRoutes,
       createHistory,
     }),
     devTools(),
@@ -18,7 +18,7 @@ if (__DEVTOOLS__) {
 } else {
   finalCreateStore = compose(
     reduxReactRouter({
-      routes,
+      getRoutes,
       createHistory,
     }),
   )(createStore);
