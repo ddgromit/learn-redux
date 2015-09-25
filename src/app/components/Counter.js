@@ -8,7 +8,7 @@ import { pushState } from 'redux-router';
 
 class Counter extends React.Component {
   onClickIncrement() {
-    this.props.dispatch(increment());
+    this.props.increment();
   }
 
   render() {
@@ -16,7 +16,7 @@ class Counter extends React.Component {
     return (
       <div className="container">
         <div>
-          <a href="/hello">Hello</a>
+          <Link to="/hello">Hello</Link>
           Current Pathname: { this.props.pathname }
           <Button onClick={() => this.props.pushState(null, '/hello')}>Dispatch to Hello</Button>
         </div>
@@ -40,4 +40,4 @@ function select(state) {
   };
 }
 
-export default connect(select, { pushState })(Counter);
+export default connect(select, { pushState, increment })(Counter);
