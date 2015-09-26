@@ -11,7 +11,7 @@ export function startWebpackDevServer(hot = true) {
       contentBase: './tools/webpack',
       publicPath: '/dist/',
       hot: hot,
-    }).listen(8080, "localhost", function(err) {
+    }).listen(8080, "0.0.0.0", function(err) {
       if (err) {
         reject(error);
       } else {
