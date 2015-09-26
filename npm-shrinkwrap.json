@@ -2186,6 +2186,11 @@
       "from": "gulp@>=3.9.0 <4.0.0",
       "resolved": "https://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz"
     },
+    "gulp-shell": {
+      "version": "0.4.3",
+      "from": "gulp-shell@*",
+      "resolved": "https://registry.npmjs.org/gulp-shell/-/gulp-shell-0.4.3.tgz"
+    },
     "gulp-util": {
       "version": "3.0.6",
       "from": "gulp-util@>=3.0.0 <4.0.0",

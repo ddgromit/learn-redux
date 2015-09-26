@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import { startWebpackDevServer } from './tools/webpack/dev-server';
 import { buildForProduction } from './tools/webpack/build';
 import { startServer } from './src/server/server';
+import shell from 'gulp-shell';
 
 gulp.task('default', ['dev']);
 
@@ -30,3 +31,15 @@ gulp.task('server', () => {
 });
 
 gulp.task('postdeploy', ['build', 'server']);
+
+gulp.task('docker:build', shell.task([
+  'docker build -t rd .'
+]));
+
+gulp.task('docker:dev', ['docker:build'], shell.task([
+  'docker run -tP --rm --name rd rd'
+]));
+
+gulp.task('docker:stop', shell.task([
+  'docker stop rd && docker rm rd'
+]));

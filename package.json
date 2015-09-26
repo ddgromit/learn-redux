@@ -26,6 +26,7 @@
     "eslint-plugin-react": "^3.4.2",
     "file-loader": "^0.8.4",
     "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.3",
     "history": "^1.10.1",
     "json-loader": "^0.5.3",
     "less": "^2.5.1",
