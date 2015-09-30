@@ -65,6 +65,8 @@ export const webpackDevConfig = merge(common, {
     ],
   },
 
+  devtool: 'source-map',
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
