@@ -1088,9 +1088,9 @@
       "resolved": "https://registry.npmjs.org/eslint-loader/-/eslint-loader-1.0.0.tgz"
     },
     "eslint-plugin-react": {
-      "version": "3.4.2",
-      "from": "eslint-plugin-react@>=3.4.2 <4.0.0",
-      "resolved": "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-3.4.2.tgz"
+      "version": "3.5.1",
+      "from": "eslint-plugin-react@3.5.1",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-3.5.1.tgz"
     },
     "esprima-fb": {
       "version": "15001.1.0-dev-harmony-fb",
