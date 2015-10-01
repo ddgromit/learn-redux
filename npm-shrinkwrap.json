@@ -422,7 +422,7 @@
     },
     "bluebird": {
       "version": "2.10.1",
-      "from": "bluebird@*",
+      "from": "bluebird@>=2.9.33 <3.0.0",
       "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.10.1.tgz"
     },
     "boom": {
@@ -2249,9 +2249,9 @@
       "resolved": "https://registry.npmjs.org/hawk/-/hawk-3.1.0.tgz"
     },
     "history": {
-      "version": "1.11.0",
-      "from": "history@>=1.10.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/history/-/history-1.11.0.tgz"
+      "version": "1.11.1",
+      "from": "history@1.11.1",
+      "resolved": "https://registry.npmjs.org/history/-/history-1.11.1.tgz"
     },
     "hoek": {
       "version": "2.16.3",
@@ -3736,19 +3736,19 @@
       }
     },
     "redux": {
-      "version": "3.0.1",
-      "from": "redux@>=3.0.0 <4.0.0",
-      "resolved": "https://registry.npmjs.org/redux/-/redux-3.0.1.tgz"
+      "version": "3.0.2",
+      "from": "redux@3.0.2",
+      "resolved": "https://registry.npmjs.org/redux/-/redux-3.0.2.tgz"
     },
     "redux-devtools": {
-      "version": "2.1.4",
-      "from": "redux-devtools@>=2.1.2 <3.0.0",
-      "resolved": "https://registry.npmjs.org/redux-devtools/-/redux-devtools-2.1.4.tgz",
+      "version": "2.1.5",
+      "from": "redux-devtools@2.1.5",
+      "resolved": "https://registry.npmjs.org/redux-devtools/-/redux-devtools-2.1.5.tgz",
       "dependencies": {
         "react-redux": {
-          "version": "3.0.0",
+          "version": "3.0.1",
           "from": "react-redux@>=3.0.0 <4.0.0",
-          "resolved": "https://registry.npmjs.org/react-redux/-/react-redux-3.0.0.tgz"
+          "resolved": "https://registry.npmjs.org/react-redux/-/react-redux-3.0.1.tgz"
         }
       }
     },
